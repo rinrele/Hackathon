@@ -8,19 +8,76 @@
 		<script src="js.jquery.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script type="text/javascript">		
-                function start(){
-                        $('#bigbox').hide();
-                        $('#lindasform').hide();
-                }
-                function poof(){
-                        $('#bigbox').hide();
-                        $('#lindasform').show();
-                }
-                function foop(){
-                        $('#bigbox').show();
-                        $('#lindasform').hide();
-                }
+            function start(){
+                $('#bigbox').hide();
+				$('#lindasform').hide();
+            }
+            function poof(){
+				$('#bigbox').hide();
+				$('#lindasform').show();
+            }
+            function foop(){
+                $('#bigbox').show();
+				$('#lindasform').hide();
+            }
+			var mylist = [""];
+			 function add(){
+				myList.push($('input').val()); //adds new items to a list and saves the value
+				$('input').val(""); //resets the box to be blank
+				refresh();
+				}
+			function refresh(){
+				var thislist = "";
+				for (var i = 0; i < mylist.length; i ++) {
+						thislist += "<li><div data-role='content'>" + mylist[i] + "<button onclick='del("+i+");'>Delete</div></li>"; //allows to delete the task chosen
+					}
+				$("#tasks").html(thislist); //displays the contents of this list as html 
+				// where the id=tasks has been called
+				$("#tasks").listview("refresh();");
+			}
+			
+			function del(index){ 
+				mylist.splice(index,1); //deletes it 
+				refresh();
+			}
+			function submittedForm1(){ //Submits Linda's form
+				if (!$.trim($("#businessName").val())) {
+					alert("Sorry ): Please check your Business Name!");
+				}
+				else if (!$.trim($("#address").val())) {
+					alert("Sorry ): Please check your Address!");
+				}
+				else if (!$.trim($("#extraInfo").val())) {
+					alert("Sorry ): Please check the Extra Information!");
+				}
+				else if (!$.trim($("#contacts").val())) {
+					alert("Sorry ): Please check the Contacts!");
+				}
+				else {
+					$('#bigbox').hide();
+					$('#lindasform').hide();
+					alert("Thank you! :D");
+				}
+			}
+			function submittedForm2(){ //Submits other form
+				if (!$.trim($("#nameInfo").val())) { //Checks Business Name
+					alert("Sorry ): Please check the name entered!");
+				}
+				else if (!$.trim($("#urlInfo").val())) { //Checks URL
+					alert("Sorry ): Please check the URL entered!");
+				}
+				else {
+					$('#bigbox').hide();
+					$('#lindasform').hide();
+					alert("Thank you! :D");
+				}
+			}
 		</script>
+		<style>
+		#URL {
+		padding-left:50px;
+		}
+		</style>
 	</head>
 	<body onload="start();">
 		<th><h3>Tell Us What To Map</h3></th>
@@ -38,13 +95,13 @@
 		<th><h3>Business Name</a></h3></th> <!-- BUSINESS NAME -->
 				<td>
 					<label for="text-full" class="ui-hidden-accessible"></label>
-			        <input type="text" name="name" id="text-full" value="" />
+			        <input type="text" name="name" id="businessName" value="" />
 				</td>
 	
 		<th><h3>Address</a></h3></th> <!-- ADDRESS --> 
 				<td>
 					<label for="text-full" class="ui-hidden-accessible"></label>
-			        <input type="text" name="name" id="text-full" value="" />
+			        <input type="text" name="name" id="address" value="" />
 				</td>	
 			
 		<th><h3>Choose All That Apply</h3></th> <!-- CHECKBOX -->
@@ -71,24 +128,41 @@
 		
 		<th><h3>Extra Information</h3></th>
 			<td>
-				<textarea cols="40" rows="10"  name="textarea-1" id="textarea-6" placeholder="Give us some more details about the place" ></textarea>
+				<textarea cols="40" rows="10"  name="textarea-1" id="extraInfo" placeholder="Give us some more details about the place" ></textarea>
 			</td>
 		
-		<th><h3>Contact Information</a></h3></th> <!-- CONTACT INFO --> 
+		<th><h3>Contact Information</h3></th> <!-- CONTACT INFO --> 
 				<td>
 					<label for="text-full" class="ui-hidden-accessible"></label>
-			        <input type="text" name="name" id="text-full" value="" placeholder="Email and Phone Number" />
+			        <input type="text" name="name" id="contacts" value="" placeholder="Email and Phone Number" />
 				</td>	
-		
+					<input type="button" value="Submit" onclick="submittedForm1();"> <!-- To send to server, input type="submit" but for now it's a button :)-->
+
 		
 		</div>	<!-- END OF LINDAFORM -->
 		</div>	
 			
 		
 		<div id="bigbox"> <!-- 2.LIST OF PLACES -->
-			<label for="textarea-1"><b>Got places?</b></label>
-			<textarea cols="40" rows="8" name="textarea-1" id="textarea-6" placeholder= "Tell us what to map :D"></textarea>
-		</div>
+			<th><h3>Name</h3></th>
+			<td>
+				<textarea cols="40" rows="10"  name="textarea-1" id="nameInfo" placeholder="Business Name"></textarea>
+			</td>
+		
+		<div id="URL"><th><h3>URL 1</h3></th> <!-- CONTACT INFO --> 
+				<td>
+					<label for="text-full" class="ui-hidden-accessible"></label>
+			        <input type="text" name="name" id="urlInfo" value="" placeholder="Paste Link Here" />
+				</td> </div>
+		
+		
+        <!--<center><button data-inline="true" data-icon = "plus" data-iconpos = "right" onclick="add();"> Add New Task </button><center> <!--new task button-->
+      
+		<input type="button" value="Submit" onclick="submittedForm2();">
+
+		
+
+		</div> <!-- END OF BIGBOX FORM -->
 		
 		
 	</body>
