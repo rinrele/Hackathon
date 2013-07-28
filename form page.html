@@ -23,24 +23,18 @@
 		</script>
 	</head>
 	<body onload="start();">
-		<th><h3>Tell Us What To Map</a></h3></th>
+		<th><h3>Tell Us What To Map</h3></th>
 				<td>
 					<fieldset data-role="controlgroup">
-				         	<input type="radio" name="radio-choice-1" id="radio-full-1" value="choice-1" checked="checked" onclick="poof();"/>
+				         	<input type="radio" name="radio-choice-1" id="radio-full-1" value="choice-1" onclick="poof();"/>
 				         	<label for="radio-full-1">Do You Know One Place Well?</label>
 				         	<input type="radio" name="radio-choice-1" id="radio-full-2" value="choice-2" onclick="foop();"  />
-				         	<label for="radio-full-2">Do You Have a List of Places to Share?</label>
-				         	
+				         	<label for="radio-full-2">Do You Have a List of Places to Share?</label> 	
 				    </fieldset>
 				</td>
 		<div data-role="content">
 		
-		<form id="bigbox">
-			<label for="textarea-1"><b>Got places?</b></label>
-			<textarea cols="40" rows="8" name="textarea-1" id="textarea-6" placeholder="Tell us what to map :D"></textarea>
-		</form>
-		
-		<div id="lindasform">
+		<div id="lindasform"> <!-- 1.DO YOU KNOW ONE PLACE WELL> -->
 		<th><h3>Business Name</a></h3></th> <!-- BUSINESS NAME -->
 				<td>
 					<label for="text-full" class="ui-hidden-accessible"></label>
@@ -75,16 +69,27 @@
 				    </fieldset>
 				</td>
 		
-		<form>
-			<th><label for="textarea-1">Extra Information</label></th>
-			<textarea cols="40" rows="10" name="textarea-1" id="textarea-6" placeholder="Give Us Some More Details About the Place"></textarea>
-		</form>		
-		<th><h3>Contacts</a></h3></th> <!-- CONTACT INFO --> 
+		<th><h3>Extra Information</h3></th>
+			<td>
+				<textarea cols="40" rows="10"  name="textarea-1" id="textarea-6" placeholder="Give us some more details about the place" ></textarea>
+			</td>
+		
+		<th><h3>Contact Information</a></h3></th> <!-- CONTACT INFO --> 
 				<td>
 					<label for="text-full" class="ui-hidden-accessible"></label>
-			        <input type="text" name="name" id="text-full" value="" />
+			        <input type="text" name="name" id="text-full" value="" placeholder="Email and Phone Number" />
 				</td>	
-		</div>			
+		
+		
+		</div>	<!-- END OF LINDAFORM -->
 		</div>	
+			
+		
+		<div id="bigbox"> <!-- 2.LIST OF PLACES -->
+			<label for="textarea-1"><b>Got places?</b></label>
+			<textarea cols="40" rows="8" name="textarea-1" id="textarea-6" placeholder= "Tell us what to map :D"></textarea>
+		</div>
+		
+		
 	</body>
 	</html>
